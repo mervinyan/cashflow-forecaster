@@ -1,0 +1,87 @@
+<div class="page page-accounts" ng-controller="AccountAlertSettingsCtrl">
+
+  <div class="pageheader">
+
+    <h2>Alert Settings | {{account.name}}</h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="app.overview"><i class="fa fa-home"></i> {{main.title}}</a>
+        </li>
+        <li>
+          <a ui-sref="app.accounts.list">Manage Accounts</a>
+        </li>
+        <li>
+          <a ui-sref="app.accounts.alert({ id: account.$id })">{{account.name}}</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- row -->
+  <div class="row">
+
+
+    <div class="col-md-12">
+
+      <!-- tile -->
+      <section class="tile tile-simple">
+
+
+        <!-- tile body -->
+        <div class="tile-body">
+<form name="form" class="form-horizontal form-validation" role="form" novalidate>
+
+  <p> You will be alerted on the Dashboard for any month that this account's forecasted balance goes below the alert amount.</p>
+
+    <div class="form-group">
+      <div class="col-sm-9 col-md-offset-3">
+        <label class="checkbox checkbox-custom-alt inline mr-20">
+          <input type="checkbox"  ng-model="account.alert_enabled"><i></i>
+          Set minimum balance alert
+        </label>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="std_apr" class="col-sm-3 control-label">Alert if balance goes below </label>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <input type="number" class="form-control" name="alert_amount" id="alert_amount" ng-model="account.alert_amount" min="0" >
+        </div>
+      </div>
+    </div>
+
+  <div class="form-footer">
+    <button class="btn btn-success b-0 pull-right" ng-click="ok(form)" ng-disabled="form.$invalid">Submit</button>
+    <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="app.accounts.list"><i class="fa fa-arrow-left"></i> Cancel</button>
+  </div>
+
+</form>
+
+
+
+
+
+
+        </div>
+        <!-- /tile body -->
+
+
+      </section>
+      <!-- /tile -->
+
+    </div>
+
+  </div>
+  <!-- /row -->
+
+</div>
+
+

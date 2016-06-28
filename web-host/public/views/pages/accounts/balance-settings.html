@@ -1,0 +1,85 @@
+<div class="page page-accounts" ng-controller="AccountBalanceSettingsCtrl">
+
+  <div class="pageheader">
+
+    <h2>Balance Settings | {{account.name}}</h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="app.overview"><i class="fa fa-home"></i> {{main.title}}</a>
+        </li>
+        <li>
+          <a ui-sref="app.accounts.list">Manage Accounts</a>
+        </li>
+        <li>
+          <a ui-sref="app.accounts.balance({ id: account.$id })">{{account.name}}</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- row -->
+  <div class="row">
+
+
+    <div class="col-md-12">
+
+      <!-- tile -->
+      <section class="tile tile-simple">
+
+
+        <!-- tile body -->
+        <div class="tile-body">
+<form name="form" class="form-horizontal form-validation" role="form" novalidate>
+
+  <p> This account's forecast will begin from this balance and date.</p>
+
+    <div class="form-group">
+      <label for="balance" class="col-sm-3 control-label">Balance </span></label>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <input type="number" class="form-control" name="balance" id="balance" ng-model="account.balance" min="0" >
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="balance_as_of_date" class="col-sm-3 control-label">At end of </label>
+      <div class="col-sm-9">
+        <input type="date" name="balance_as_of_date" class="form-control" id="balance_as_of_date" ng-model="account.balance_as_of_date">
+      </div>
+    </div>    
+
+
+  <div class="form-footer">
+    <button class="btn btn-success b-0 pull-right" ng-click="ok(form)" ng-disabled="form.$invalid">Submit</button>
+    <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="app.accounts.list"><i class="fa fa-arrow-left"></i> Cancel</button>
+  </div>
+
+</form>
+
+
+
+
+
+
+        </div>
+        <!-- /tile body -->
+
+
+      </section>
+      <!-- /tile -->
+
+    </div>
+
+  </div>
+  <!-- /row -->
+
+</div>
+
+

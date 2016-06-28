@@ -1,0 +1,88 @@
+{
+  "title": "createBudget",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string"
+    },
+    "aggregate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["name"]
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "category_id": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
+        },
+        "scenario_id": {
+          "type": "string"
+        },
+        "transfer_scenario_id": {
+          "type": "string"
+        },
+        "starts_on": {
+          "type": "string"
+        },
+        "repeat_frequency": {
+          "type": "string"
+        },        
+        "repeat_interval": {
+          "type": "string"
+        },        
+        "repeat_on_monday": {
+          "type": "boolean"
+        },        
+        "repeat_on_tuesday": {
+          "type": "boolean"
+        },        
+        "repeat_on_wednesday": {
+          "type": "boolean"
+        },        
+        "repeat_on_thursday": {
+          "type": "boolean"
+        },        
+        "repeat_on_friday": {
+          "type": "boolean"
+        },        
+        "repeat_on_saturday": {
+          "type": "boolean"
+        },        
+        "repeat_on_sunday": {
+          "type": "boolean"
+        },        
+        "repeat_by": {
+          "type": "string"
+        },        
+        "repeat_end_option": {
+          "type": "string"
+        },        
+        "repeat_occurrences": {
+          "type": "number"
+        },
+        "repeat_until": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }       
+      },
+      "required": ["category_id", "amount", "type", "scenario_id", "starts_on", "repeat_frequency"]
+    }
+  },
+  "required": ["id", "command", "payload"]
+}

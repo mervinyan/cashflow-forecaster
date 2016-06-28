@@ -1,0 +1,43 @@
+{
+  "title": "changeScenario",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string"
+    },
+    "aggregate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["name"]
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "account_id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "interest_payment_frequency": {
+          "type": "string"
+        },
+        "interest_rate_per_annum": {
+          "type": "number"
+        },
+      },
+      "required": ["name", "account_id", "type"]
+    }
+  },
+  "required": ["id", "command", "payload"]
+}

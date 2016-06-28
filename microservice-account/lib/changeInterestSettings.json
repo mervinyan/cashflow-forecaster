@@ -1,0 +1,34 @@
+{
+  "title": "changeInterestSettings",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string"
+    },
+    "aggregate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["name"]
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "interest_payment_frequency": {
+          "type": "string"
+        },
+        "interest_rate_per_annum": {
+          "type": "number"
+        }
+      },
+      "required": ["interest_payment_frequency", "interest_rate_per_annum"]
+    }
+  },
+  "required": ["id", "command", "payload"]
+}

@@ -1,0 +1,65 @@
+<form name="form" class="form-horizontal form-validation" role="form" novalidate>
+
+  <div class="form-group">
+    <label for="name" class="col-sm-3 control-label">Name <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <input type="text" name="name" class="form-control" id="name" placeholder="Scenario name..." ng-model="scenario.name" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="account" class="col-sm-3 control-label">Account <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <select chosen="{width: '100%'}" name="account" class="form-control" id="account" ng-options="a.id as a.name for a in accounts" ng-model="scenario.account_id" data-placeholder="Select an account..." required>
+          <option></option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="interest_payment_frequency" class="col-sm-3 control-label">Interest Payment Frequency <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <select chosen="{width: '100%'}" name="type" class="form-control" id="interest_payment_frequency" ng-options="k as v for (k,v) in interest_payment_frequencies" ng-model="scenario.interest_payment_frequency" data-placeholder="Select an interest payment frequency..." required>
+          <option></option>
+      </select>
+    </div>
+  </div>
+
+    <div class="form-group">
+      <label for="std_apr" class="col-sm-3 control-label">Interest Rate (Per Annum) </label>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <input type="number" class="form-control" name="interest_rate_per_annum" id="interest_rate_per_annum" ng-model="scenario.interest_rate_per_annum" min="0" max="100" >
+          <div class="input-group-addon">%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" ng-show="!editing">
+      <label for="balance" class="col-sm-3 control-label">Balance </span></label>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <input type="number" class="form-control" name="balance" id="balance" ng-model="scenario.opening_balance" min="0" >
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" ng-show="!editing">
+      <label for="balance_as_of_date" class="col-sm-3 control-label">At end of </label>
+      <div class="col-sm-9">
+        <input type="date" name="balance_as_of_date" class="form-control" id="balance_as_of_date" ng-model="scenario.opening_balance_as_of_date">
+      </div>
+    </div>    
+
+  </div>
+
+
+  <div class="form-footer">
+    <button class="btn btn-success b-0 pull-right" ng-click="ok(form)" ng-disabled="form.$invalid">Submit</button>
+    <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="app.scenarios.list"><i class="fa fa-arrow-left"></i> Cancel</button>
+  </div>
+
+</form>
+
+

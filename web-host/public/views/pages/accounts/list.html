@@ -1,0 +1,132 @@
+<div class="page page-accounts" ng-controller="AccountsListCtrl">
+
+  <div class="pageheader">
+
+    <h2>Manage Accounts</h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="app.overview"><i class="fa fa-home"></i> {{main.title}}</a>
+        </li>
+        <li>
+          <a ui-sref="app.accounts.list">Manage Accounts</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- row -->
+  <div class="row">
+
+
+    <div class="col-md-12">
+
+      <!-- tile -->
+      <section class="tile" fullscreen="isFullscreen01">
+
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+          <h1 class="custom-font"><strong>Manage </strong>Accounts</h1>
+          <ul class="controls">
+
+            <li><button class="btn-nostyle" ui-sref="app.accounts.new"><i class="fa fa-plus mr-5"></i> Add Account</button></li>
+
+          </ul>
+          
+        </div>
+        <!-- /tile header -->
+
+        <!-- tile body -->
+        <div class="tile-body">
+
+
+          <!--<div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+              <input type="text" class="form-control underline-input w-md pull-right mb-20" placeholder="Search..." ng-model="searchText">
+            </div>
+          </div>-->
+
+          <div class="table-responsive">
+            <table ng-table="tableParams" class="table table-custom" template-pagination="custom/pager">
+              <tr ng-repeat="account in $data">
+                <td data-title="'Name'" sortable="'name'">
+                  <a href="javascript:;" ui-sref="app.accounts.show({ id: account.id })">{{account.name}}</a>
+                </td>
+                <td data-title="'Bank'" sortable="'bank'">
+                  {{account.bank}}
+                </td>
+                <td data-title="'Type'" sortable="'type'">
+                  {{account.type}}
+                </td>
+                <td data-title="'Currency'" sortable="'currency'">
+                  {{account.currency}}
+                </td>
+                <td data-title="'Status'" sortable="'status'">
+                  <span class="label" ng-class="{'bg-success' : account.status == 'active','bg-lightred' : account.status == 'closed'}">
+                    {{ account.status }}
+                  </span>
+                </td>
+                <td data-title="'Balance'" sortable="'balance'">
+                  {{account.balance | currency}}
+                </td>
+                <td data-title="'Actions'" class="actions">
+                  <button class="btn-nostyle edit" ng-show="account.status =='active'" ui-sref="app.accounts.edit({ id: account.id })">Edit</button>
+                  <button class="btn-nostyle delete" ng-show="account.status =='active'" ng-click="close(account)">Close</button>                  
+                  <button class="btn-nostyle edit" ng-show="account.status =='active'" ui-sref="app.accounts.balance-settings({ id: account.id })">Balance</button>
+                  <button class="btn-nostyle edit" ng-show="account.status =='active'" ui-sref="app.accounts.interest-settings({ id: account.id })">Interest</button>
+                  <button class="btn-nostyle edit" ng-show="account.status =='active'" ui-sref="app.accounts.alert-settings({ id: account.id })">Alert</button>
+                  <button class="btn-nostyle delete" ng-click="delete(account)">Delete</button>
+                </td>
+
+              </tr>
+            </table>
+            <script type="text/ng-template" id="custom/pager">
+              <div class="ng-cloak ng-table-pager mt-20" ng-if="params.data.length">
+
+                <div ng-if="params.settings().counts.length" class="ng-table-counts btn-group pull-right">
+
+                  <select ng-options="count for count in params.settings().counts" ng-model="params.$params.count" class="form-control"></select>
+
+                </div>
+
+                <ul class="pagination pagination-xs pagination-custom">
+                  <li ng-class="{'disabled': !page.active && !page.current, 'active': page.current}" ng-repeat="page in pages" ng-switch="page.type">
+                    <a ng-switch-when="prev" ng-click="params.page(page.number)" href="">Previous</a>
+                    <a ng-switch-when="first" ng-click="params.page(page.number)" href="">
+                      <span ng-bind="page.number"></span>
+                    </a>
+                    <a ng-switch-when="page" ng-click="params.page(page.number)" href="">
+                      <span ng-bind="page.number"></span>
+                    </a>
+                    <a ng-switch-when="more" ng-click="params.page(page.number)" href="">&#8230;</a>
+                    <a ng-switch-when="last" ng-click="params.page(page.number)" href="">
+                      <span ng-bind="page.number"></span>
+                    </a>
+                    <a ng-switch-when="next" ng-click="params.page(page.number)" href="">Next</a>
+                  </li>
+                </ul>
+              </div>
+            </script>
+
+          </div>
+
+
+        </div>
+        <!-- /tile body -->
+
+      </section>
+      <!-- /tile -->
+
+    </div>
+
+  </div>
+  <!-- /row -->
+
+</div>
+
+

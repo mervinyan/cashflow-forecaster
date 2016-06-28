@@ -1,0 +1,88 @@
+{
+  "title": "changeAccount",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string"
+    },
+    "aggregate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["name"]
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "bank": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "balance": {
+          "type": "number"
+        },
+        "yield": {
+          "type": "number"
+        },
+        "monthly_fee": {
+          "type": "number"
+        },
+        "minmum_balance": {
+          "type": "number"
+        },
+        "free_bill_pay": {
+          "type": "boolean"
+        },
+        "free_atm_use": {
+          "type": "boolean"
+        },
+        "standard_apr": {
+          "type": "number"
+        },
+        "annual_fee": {
+          "type": "number"
+        },
+        "brand": {
+          "type": "string"
+        },
+        "rewards": {
+          "type": "string"
+        },
+        "rewards_rate": {
+          "type": "string"
+        },
+        "interest_rate": {
+          "type": "number"
+        },
+        "term": {
+          "type": "string"
+        },
+        "loan_amount": {
+          "type": "number"
+        },
+        "origination_date": {
+          "type": "string"
+        },
+        "mortgage_type": {
+          "type": "string"
+        }       
+      },
+      "required": ["name", "bank", "type", "status", "balance"]
+    }
+  },
+  "required": ["id", "command", "payload"]
+}

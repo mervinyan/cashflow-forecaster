@@ -1,0 +1,86 @@
+<div class="page page-accounts" ng-controller="AccountInterestSettingsCtrl">
+
+  <div class="pageheader">
+
+    <h2>Interest Settings | {{account.name}}</h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="app.overview"><i class="fa fa-home"></i> {{main.title}}</a>
+        </li>
+        <li>
+          <a ui-sref="app.accounts.list">Manage Accounts</a>
+        </li>
+        <li>
+          <a ui-sref="app.accounts.interest({ id: account.$id })">{{account.name}}</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- row -->
+  <div class="row">
+
+
+    <div class="col-md-12">
+
+      <!-- tile -->
+      <section class="tile tile-simple">
+
+
+        <!-- tile body -->
+        <div class="tile-body">
+<form name="form" class="form-horizontal form-validation" role="form" novalidate>
+
+  <p> The forecast will automatically generate interest events based on the current balance.</p>
+
+  <div class="form-group">
+    <label for="interest_payment_frequency" class="col-sm-3 control-label">Interest Payment Frequency <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <select chosen="{width: '100%'}" name="type" class="form-control" id="interest_payment_frequency" ng-options="k as v for (k,v) in interest_payment_frequencies" ng-model="account.interest_payment_frequency" data-placeholder="Select an interest payment frequency..." required>
+          <option></option>
+      </select>
+    </div>
+  </div>
+
+    <div class="form-group">
+      <label for="std_apr" class="col-sm-3 control-label">Interest Rate (Per Annum) </label>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <input type="number" class="form-control" name="interest_rate_per_annum" id="interest_rate_per_annum" ng-model="account.interest_rate_per_annum" min="0" max="100" >
+          <div class="input-group-addon">%</div>
+        </div>
+      </div>
+    </div>
+
+  <div class="form-footer">
+    <button class="btn btn-success b-0 pull-right" ng-click="ok(form)" ng-disabled="form.$invalid">Submit</button>
+    <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="app.accounts.list"><i class="fa fa-arrow-left"></i> Cancel</button>
+  </div>
+
+</form>
+
+
+
+
+
+
+        </div>
+        <!-- /tile body -->
+
+
+      </section>
+      <!-- /tile -->
+
+    </div>
+
+  </div>
+  <!-- /row -->
+
+</div>
+
+

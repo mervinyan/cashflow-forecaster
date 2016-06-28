@@ -1,0 +1,188 @@
+<form name="form" class="form-horizontal form-validation" role="form" novalidate>
+
+  <div class="form-group">
+    <label for="category" class="col-sm-3 control-label">Category <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <select chosen="{width: '100%'}" name="category" class="form-control" id="category" ng-options="c.id as c.name group by c.parentName for c in childCategories" ng-model="budget.category_id" data-placeholder="Select a category..." required>
+          <option></option>
+      </select>
+    </div>
+  </div>
+
+    <div class="form-group">
+      <label for="amount" class="col-sm-3 control-label">Amount <span class="text-danger" style="font-size: 15px;">*</span></label>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <input type="number" class="form-control" name="amount" id="amount" ng-model="budget.amount" min="0" >
+        </div>
+      </div>
+    </div>
+
+  <div class="form-group">
+    <label for="type" class="col-sm-3 control-label">Type <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <label class="radio-inline">
+        <input type="radio" ng-model="budget.type" name="budget_type" value="expense">
+            Expense
+      </label>
+      <label class="radio-inline">
+        <input type="radio" ng-model="budget.type" name="budget_type" value="income">
+            Income
+      </label>
+      <!--<select chosen="{width: '100%'}" name="type" class="form-control" id="type" ng-options="k as v for (k,v) in budget_types" ng-model="budget.type" data-placeholder="Select an budget type..." required>
+          <option></option>
+      </select>-->
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="scenario" class="col-sm-3 control-label">Scenario <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <select chosen="{width: '100%'}" name="scenario" class="form-control" id="scenario" ng-options="s.id as s.name for s in scenarios" ng-model="budget.scenario_id" data-placeholder="Select a scenario..." required>
+          <option></option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="transfer_to_scenario" class="col-sm-3 control-label" ng-show="budget.type == 'expense'">Transfer To </label>
+    <label for="transfer_from_scenario" class="col-sm-3 control-label" ng-show="budget.type == 'income'">Transfer From </label>
+    <div class="col-sm-9">
+      <select chosen="{width: '100%'}" name="transfer_scenario" class="form-control" id="transfer_scenario" ng-options="s.id as s.name for s in scenarios" ng-model="budget.transfer_scenario_id" data-placeholder="Select a scenario..." >
+          <option></option>
+      </select>
+    </div>
+  </div>
+
+    <div class="form-group">
+      <label for="starts_on" class="col-sm-3 control-label">Date <span class="text-danger" style="font-size: 15px;">*</span></label>
+      <div class="col-sm-9">
+        <input type="date" name="starts_on" class="form-control" id="starts_on" ng-model="budget.starts_on" required>
+      </div>
+    </div>    
+
+    <div class="form-group">
+      <label for="repeat_frequency" class="col-sm-3 control-label">Repeat <span class="text-danger" style="font-size: 15px;">*</span></label>
+      <div class="col-sm-9">
+        <select chosen="{width: '100%'}" name="repeat_frequency" class="form-control" id="repeat_frequency" ng-options="opt.key as opt.label for opt in repeat_frequencies" ng-model="budget.repeat_frequency" required>
+          <option></option>
+      </select>
+      </div>
+    </div>    
+
+    <div class="form-group" ng-hide="budget.repeat_frequency == 'once'">
+      <label for="repeat_interval" class="col-sm-3 control-label">Repeat every </label>
+      <div class="col-sm-9">
+          <select chosen="{width: '10%'}" name="repeat_interval" class="form-control" id="repeat_interval" ng-options="opt.key as opt.label for opt in repeat_intervals" ng-model="budget.repeat_interval" >
+            <option></option>
+          </select>
+          <label ng-show="budget.repeat_frequency == 'daily'" class="control-label">
+            days 
+          </label>
+          <label ng-show="budget.repeat_frequency == 'weekly'" class="control-label">
+            weeks 
+          </label>
+          <label ng-show="budget.repeat_frequency == 'monthly'" class="control-label">
+            months 
+          </label>
+          <label ng-show="budget.repeat_frequency == 'yearly'" class="control-label">
+            years 
+          </label>
+      </div>
+    </div>    
+
+    <div class="form-group" ng-show="budget.repeat_frequency == 'weekly'">
+      <label for="repeat_on" class="col-sm-3 control-label">Repeat on </label>
+      <div class="col-sm-9">
+        <label class="checkbox checkbox-custom-alt inline">
+          <input type="checkbox" ng-model="budget.repeat_on_monday"><i></i>
+          M
+        </label>
+        <label class="checkbox checkbox-custom-alt inline">
+          <input type="checkbox" ng-model="budget.repeat_on_tuesday"><i></i>
+          T
+        </label>
+        <label class="checkbox checkbox-custom-alt inline">
+          <input type="checkbox" ng-model="budget.repeat_on_wednesday"><i></i>
+          W
+        </label>
+        <label class="checkbox checkbox-custom-alt inline">
+          <input type="checkbox" ng-model="budget.repeat_on_thursday"><i></i>
+          T
+        </label>
+        <label class="checkbox checkbox-custom-alt inline">
+          <input type="checkbox" ng-model="budget.repeat_on_friday"><i></i>
+          F
+        </label>
+        <label class="checkbox checkbox-custom-alt inline">
+          <input type="checkbox" ng-model="budget.repeat_on_saturday"><i></i>
+          S
+        </label>
+        <label class="checkbox checkbox-custom-alt inline">
+          <input type="checkbox" ng-model="budget.repeat_on_sunday"><i></i>
+          S
+        </label>
+      </div>
+    </div>    
+
+    <div class="form-group" ng-show="budget.repeat_frequency == 'monthly'">
+      <label for="repeat_by" class="col-sm-3 control-label">Repeat by </label>
+      <div class="col-sm-9">
+        <label class="radio-inline">
+          <input type="radio" ng-model="budget.repeat_by" name="repeat_by" value="day_of_month">
+              day of the month
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-model="budget.repeat_by" name="repeat_by" value="day_of_week">
+              day of the week
+        </label>
+      </div>
+    </div>    
+
+
+    <div class="form-group"  ng-hide="budget.repeat_frequency == 'once'">
+      <label for="starts_on" class="col-sm-3 control-label">Starts On</label>
+      <div class="col-sm-9">
+        <input type="date" name="starts_on" class="form-control" id="starts_on" ng-model="budget.starts_on" style="width: 200px" disabled>
+      </div>
+    </div>    
+
+
+    <div class="form-group" ng-hide="budget.repeat_frequency == 'once'">
+      <label for="repeat_frequency" class="col-sm-3 control-label">Ends </label>
+      <div class="col-sm-9">
+        <div class="radio input-group">
+          <label>
+            <input type="radio" name="endsOption" value="occurrences" ng-model="budget.repeat_end_option">
+            After
+            <input type="number"  ng-model="budget.repeat_occurrencies" style="width: 50px"  ng-disabled="budget.repeat_end_option == 'until'">
+            occurrences
+          </label>
+        </div>
+        <div class="radio input-group">
+          <label>
+            <input type="radio" name="endsOption" value="until" ng-model="budget.repeat_end_option">
+            On
+            <input type="date" name="repeat_until" id="repeat_until" ng-model="budget.repeat_until" ng-disabled="budget.repeat_end_option == 'occurrences'">
+          </label>
+        </div>
+      </div>
+    </div>    
+
+  <div class="form-group">
+    <label for="description" class="col-sm-3 control-label">Description </label>
+    <div class="col-sm-9">
+      <textarea name="description" class="form-control" id="description" ng-model="budget.description" />
+    </div>
+  </div>
+
+
+  <div class="form-footer">
+    <button class="btn btn-success b-0 pull-right" ng-click="ok(form)" ng-disabled="form.$invalid">Submit</button>
+    <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="app.budgets.list"><i class="fa fa-arrow-left"></i> Cancel</button>
+  </div>
+
+</form>
+
+

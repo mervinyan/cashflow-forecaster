@@ -1,0 +1,80 @@
+<div class="page page-accounts" ng-controller="ShowAccountCtrl">
+
+  <div class="pageheader">
+
+    <h2>{{account.name}}</h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="app.overview"><i class="fa fa-home"></i> {{main.title}}</a>
+        </li>
+        <li>
+          <a ui-sref="app.accounts.list">Manage Accounts</a>
+        </li>
+        <li>
+          <a ui-sref="app.accounts.show({ id: account.$id })">{{account.name}}</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- row -->
+  <div class="row">
+
+
+    <div class="col-md-12">
+
+      <!-- tile -->
+      <section class="tile tile-simple">
+
+
+        <!-- tile body -->
+        <div class="tile-body">
+
+
+          <ul class="list-unstyled m-20">
+            <li><strong>Name:</strong> {{account.name}}</li>
+            <li><strong>Bank:</strong> {{account.bank}}</li>
+            <li><strong>Type:</strong> {{account.type}}</li>
+            <li><strong>Status:</strong> {{account.status}}</li>
+            <li><strong>Balance:</strong> {{account.balance}}</li>
+            <li ng-if="account.type == 'checking' || account.type=='saving'"><strong>Yield (APY):</strong> {{account.yield}}</li>
+            <li ng-if="account.type == 'checking' || account.type=='saving'"><strong>Monthly Fee:</strong> {{account.monthly_fee}}</li>
+            <li ng-if="account.type == 'checking' || account.type=='saving'"><strong>Min. Balance:</strong> {{account.minimum_balance}}</li>
+            <li ng-if="account.type == 'checking' || account.type=='saving'"><strong>Free Bill Pay:</strong> {{account.free_bill_pay}}</li>
+            <li ng-if="account.type == 'checking' || account.type=='saving'"><strong>Free ATM Use:</strong> {{account.free_atm_use}}</li>
+            <li ng-if="account.type == 'credit_card'"><strong>Std.APR:</strong> {{account.std_apr}}</li>
+            <li ng-if="account.type == 'credit_card'"><strong>Annual Fee:</strong> {{account.annual_fee}}</li>
+            <li ng-if="account.type == 'credit_card'"><strong>Brand:</strong> {{account.brand}}</li>
+            <li ng-if="account.type == 'credit_card'"><strong>Rewards:</strong> {{account.rewards}}</li>
+            <li ng-if="account.type == 'credit_card'"><strong>Rewards Rate:</strong> {{account.rewards_rate}}</li>
+            <li ng-if="account.type == 'mortgage'"><strong>Interest Rate:</strong> {{account.interest_rate}}</li>
+            <li ng-if="account.type == 'mortgage'"><strong>Term:</strong> {{account.term}}</li>
+            <li ng-if="account.type == 'mortgage'"><strong>Loan Amount:</strong> {{account.loan_amount}}</li>
+            <li ng-if="account.type == 'mortgage'"><strong>Origination Date:</strong> {{account.origination_date}}</li>
+            <li ng-if="account.type == 'mortgage'"><strong>Mortgage Type:</strong> {{account.mortgage_type}}</li>
+          </ul>
+
+          <div class="form-footer">
+            <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="app.accounts.list"><i class="fa fa-arrow-left"></i> Back</button>
+          </div>
+
+        </div>
+        <!-- /tile body -->
+
+
+      </section>
+      <!-- /tile -->
+
+    </div>
+
+  </div>
+  <!-- /row -->
+
+</div>
+
+
