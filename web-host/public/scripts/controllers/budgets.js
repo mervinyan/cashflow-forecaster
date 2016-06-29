@@ -58,7 +58,7 @@ app
       });
 
       // Delete CRUD operation
-      $scope.delete = function (category) {
+      $scope.delete = function (budget) {
         if (confirm('Are you sure?')) {
           CQRS.sendCommand({
             id:_.uniqueId('msg'),
@@ -67,7 +67,7 @@ app
               name: $scope.aggregate
             },
             payload: { 
-              id: category.id
+              id: budget.id
             },
           });
         }
@@ -103,6 +103,21 @@ app
                 var existingScenario = $filter('filter')($scope.scenarios, { id: value.scenario_id }, true)[0];
                 if (existingScenario != null && existingScenario != undefined) {
                   value.scenario = existingScenario;
+                }
+              }
+              if (value.transfer_scenario_id){
+                var existingScenario = $filter('filter')($scope.scenarios, { id: value.transfer_scenario_id }, true)[0];
+                if (existingScenario != null && existingScenario != undefined) {
+                  var _budget = {};
+                  angular.copy(value, _budget);
+                  if (value.type == 'expense') {
+                      _budget.type = 'income';
+                  } else {
+                    _budget.type = 'expense';
+                  }
+                  _budget.scenario_id = value.transfer_scenario_id;
+                  _budget.scenario = existingScenario;
+                  $scope.budgets.push(_budget);
                 }
               }
             });
@@ -168,6 +183,19 @@ app
       });
 
             $scope.ok = function () {
+              if ($scope.budget.repeat_frequency == 'once') {
+                $scope.budget.repeat_end_option = '';
+                $scope.budget.repeat_interval = '';
+                $scope.budget.repeat_occurrencies = 0;
+                $scope.budget.repeat_until = '';
+              } else {
+                if ($scope.budget.repeat_end_option == 'occurrences') {
+                  $scope.budget.repeat_until = '';
+                } else if ($scope.budget.repeat_end_option == 'until') {
+                  $scope.budget.repeat_occurrences = 0;
+                }
+
+              }              
                 CQRS.sendCommand({
                     id: _.uniqueId('msg'),
                     command: commandName,
@@ -226,12 +254,19 @@ app
       });
 
             $scope.ok = function (form) {
-              if ($scope.budget.repeat_end_option == 'occurrences') {
+              if ($scope.budget.repeat_frequency == 'once') {
+                $scope.budget.repeat_end_option = '';
+                $scope.budget.repeat_interval = '';
+                $scope.budget.repeat_occurrencies = 0;
                 $scope.budget.repeat_until = '';
-              } else if ($scope.budget.repeat_end_option == 'until') {
-                $scope.budget.repeat_occurrences = 0;
+              } else {
+                if ($scope.budget.repeat_end_option == 'occurrences') {
+                  $scope.budget.repeat_until = '';
+                } else if ($scope.budget.repeat_end_option == 'until') {
+                  $scope.budget.repeat_occurrences = 0;
+                }
+
               }
-console.log($scope.budget);
                 CQRS.sendCommand({
                     id: _.uniqueId('msg'),
                     command: commandName,

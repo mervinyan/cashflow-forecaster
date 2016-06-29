@@ -156,6 +156,49 @@ app
       templateUrl: 'views/pages/budgets/edit.html',
       authRequired: true
     },
+    'app.forecasts': {
+      abstract: true,
+      url: '/forecasts',
+      template: '<div ui-view></div>',
+      authRequired: true
+    },
+    'app.forecasts.list': {
+      url: '/list',
+      controller: 'ForecastsCtrl',
+      templateUrl: 'views/pages/forecasts/list.html',
+      authRequired: true
+    },
+
+    'app.actuals': {
+      abstract: true,
+      url: '/actuals',
+      template: '<div ui-view></div>',
+      authRequired: true
+    },
+    'app.actuals.list': {
+      url: '/list',
+      controller: 'ActualsCtrl',
+      templateUrl: 'views/pages/actuals/list.html',
+      authRequired: true
+    },
+    'app.actuals.new': {
+      url: '/new',
+      controller: 'ActualsCtrl',
+      templateUrl: 'views/pages/actuals/new.html',
+      authRequired: true
+    },
+    'app.actuals.edit': {
+      url: '/:id/edit',
+      controller: 'ActualsCtrl',
+      templateUrl: 'views/pages/actuals/edit.html',
+      authRequired: true
+    },
+    'app.actuals.import': {
+      url: '/import',
+      controller: 'ActualsCtrl',
+      templateUrl: 'views/pages/actuals/import.html',
+      authRequired: true
+    },
 
     'app.products': {
       abstract: true,

@@ -1,0 +1,88 @@
+<form name="form" class="form-horizontal form-validation" role="form" novalidate>
+
+  <div class="form-group">
+    <label for="account" class="col-sm-3 control-label">Account <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <select chosen="{width: '100%'}" name="account" class="form-control" id="account" ng-options="a.id as a.name for a in accounts" ng-model="actual.account_id" data-placeholder="Select a account..." required>
+          <option></option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="merchant" class="col-sm-3 control-label">Merchant <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <input type="text" name="merchant" class="form-control" id="merchant" ng-model="actual.merchant" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="category" class="col-sm-3 control-label">Category <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <select chosen="{width: '100%'}" name="category" class="form-control" id="category" ng-options="c.id as c.name group by c.parentName for c in childCategories" ng-model="actual.category_id" data-placeholder="Select a category..." required>
+          <option></option>
+      </select>
+    </div>
+  </div>
+
+    <div class="form-group">
+      <label for="amount" class="col-sm-3 control-label">Amount <span class="text-danger" style="font-size: 15px;">*</span></label>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <input type="number" class="form-control" name="amount" id="amount" ng-model="actual.amount" min="0" >
+        </div>
+      </div>
+    </div>
+
+  <div class="form-group">
+    <label for="type" class="col-sm-3 control-label">Type <span class="text-danger" style="font-size: 15px;">*</span></label>
+    <div class="col-sm-9">
+      <label class="radio-inline">
+        <input type="radio" ng-model="actual.type" name="actual_type" value="credit">
+            Credit
+      </label>
+      <label class="radio-inline">
+        <input type="radio" ng-model="actual.type" name="actual_type" value="debit">
+            Debit
+      </label>
+    </div>
+  </div>
+
+    <div class="form-group">
+      <label for="date" class="col-sm-3 control-label">Date <span class="text-danger" style="font-size: 15px;">*</span></label>
+      <div class="col-sm-9">
+        <input type="date" name="date" class="form-control" id="date" ng-model="actual.date" required>
+      </div>
+    </div>    
+
+  <div class="form-group">
+    <label for="description" class="col-sm-3 control-label">Description </label>
+    <div class="col-sm-9">
+      <input type="text" name="description" class="form-control" id="description" ng-model="actual.description">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="labels" class="col-sm-3 control-label">Labels </label>
+    <div class="col-sm-9">
+       <input type="text" name="labels" class="form-control" id="labels" ng-model="actual.labels">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="notes" class="col-sm-3 control-label">Notes</label>
+    <div class="col-sm-9">
+      <textarea name="notes" id="notes" ng-model="actual.notes" class="form-control" placeholder="Transaction notes..." rows="5" ng-maxlength="260"></textarea>
+      <span class="help-block">Max. 260 characters</span>
+    </div>
+  </div>
+
+  <div class="form-footer">
+    <button class="btn btn-success b-0 pull-right" ng-click="ok(form)" ng-disabled="form.$invalid">Submit</button>
+    <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="app.actuals.list"><i class="fa fa-arrow-left"></i> Cancel</button>
+  </div>
+
+</form>
+
+

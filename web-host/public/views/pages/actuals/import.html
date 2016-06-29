@@ -1,0 +1,96 @@
+<div class="page page-actuals" ng-controller="ImportActualCtrl">
+
+  <div class="pageheader">
+
+    <h2>Import Actual</h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="app.overview"><i class="fa fa-home"></i> {{main.title}}</a>
+        </li>
+        <li>
+          <a ui-sref="app.actuals.list">Manage Actuals</a>
+        </li>
+        <li>
+          <a ui-sref="app.actuals.new">Import Actual</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- row -->
+  <div class="row">
+
+
+    <div class="col-md-12">
+
+      <!-- tile -->
+      <section class="tile tile-simple">
+
+
+        <!-- tile body -->
+        <div class="tile-body">
+
+            <form name="form" class="form-horizontal form-validation" role="form" novalidate>
+
+            <div class="form-group">
+                <label for="account" class="col-sm-3 control-label">Account <span class="text-danger" style="font-size: 15px;">*</span></label>
+                <div class="col-sm-9">
+                <select chosen="{width: '100%'}" name="account" class="form-control" id="account" ng-options="a.id as a.name for a in accounts" ng-model="import_actuals.account_id" data-placeholder="Select a account..." required>
+                    <option></option>
+                </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-3">Select csv file <span class="text-danger" style="font-size: 15px;">*</span></label>
+              <div class="col-sm-9">
+                  <ng-csv-import 
+                        class="import"
+                        content="csv.content"
+                        header="csv.header" 
+                        header-visible="csv.headerVisible" 
+                        separator="csv.separator"
+                        separator-visible="csv.separatorVisible"
+                        result="csv.result"
+                        encoding="csv.encoding"
+                        encoding-visible="csv.encodingVisible">
+                    </ng-csv-import>
+              </div>
+            </div>
+            <div class="block row"  ng-if="csv.result">
+                <div class="content" hljs source="toPrettyJSON(csv.result, 2)"></div>
+            </div>
+
+
+            <div class="form-footer">
+                <button class="btn btn-success b-0 pull-right" ng-click="ok(form)" ng-disabled="form.$invalid">Submit</button>
+                <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ui-sref="app.actuals.list"><i class="fa fa-arrow-left"></i> Cancel</button>
+            </div>
+
+            </form>
+
+
+
+
+
+
+        </div>
+        <!-- /tile body -->
+
+
+      </section>
+      <!-- /tile -->
+
+    </div>
+
+  </div>
+  <!-- /row -->
+
+</div>
+
+

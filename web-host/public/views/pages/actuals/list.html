@@ -1,8 +1,8 @@
-<div class="page page-budgets" ng-controller="BudgetsListCtrl">
+<div class="page page-actuals" ng-controller="ActualsListCtrl">
 
   <div class="pageheader">
 
-    <h2>Manage Budgets</h2>
+    <h2>Manage Actuals</h2>
 
     <div class="page-bar">
 
@@ -11,7 +11,7 @@
           <a ui-sref="app.overview"><i class="fa fa-home"></i> {{main.title}}</a>
         </li>
         <li>
-          <a ui-sref="app.budgets.list">Manage Budgets</a>
+          <a ui-sref="app.actuals.list">Manage Actuals</a>
         </li>
       </ul>
 
@@ -30,13 +30,13 @@
 
         <!-- tile header -->
         <div class="tile-header dvd dvd-btm">
-          <h1 class="custom-font"><strong>Manage </strong>Budgets</h1>
+          <h1 class="custom-font"><strong>Manage </strong>Actuals</h1>
           <ul class="controls">
 
-            <li><button class="btn-nostyle" ui-sref="app.budgets.new"><i class="fa fa-plus mr-5"></i> Add Budget</button></li>
+            <li><button class="btn-nostyle" ui-sref="app.actuals.new"><i class="fa fa-plus mr-5"></i> Add Actual</button></li>
+            <li><button class="btn-nostyle" ui-sref="app.actuals.import"><i class="fa fa-upload mr-5"></i> Import Actual</button></li>
 
           </ul>
-          
         </div>
         <!-- /tile header -->
 
@@ -44,61 +44,45 @@
         <div class="tile-body">
 
 
-          <!--<div class="row">
+          <div class="row">
             <div class="col-md-6"></div>
             <div class="col-md-6">
               <input type="text" class="form-control underline-input w-md pull-right mb-20" placeholder="Search..." ng-model="searchText">
             </div>
-          </div>-->
+          </div>
 
           <div class="table-responsive">
             <table ng-table="tableParams" class="table table-custom" template-pagination="custom/pager">
-              <tr ng-repeat="budget in $data">
-                <td data-title="'Name'" sortable="'category/name'">
-                  {{budget.category.name}}
+              <tr ng-repeat="actual in $data">
+                <td data-title="'Date'" sortable="'date'">
+                  {{actual.date | date}}
                 </td>
+                <td data-title="'Account'" sortable="'account/name'">
+                  {{actual.account.name}}
+                </td>
+                <td data-title="'Merchant'">
+                  {{actual.merchant}}
+                </td>                
                 <td data-title="'Amount'">
-                  {{budget.amount | currency}}
+                  {{actual.amount | currency}}
                 </td>
                 <td data-title="'Type'">
-                  {{budget.type}}
+                  {{actual.type}}
                 </td>
-                <td data-title="'Date'">
-                  {{budget.starts_on | date}}
+                <td data-title="'Category'" sortable="'category/name'">
+                  {{actual.category.name}}
                 </td>
-                <td data-title="'Repeat'">
-                  <label ng-show="budget.repeat_frequency=='once'">
-                    {{budget.repeat_frequency}}
-                  </label>  
-                  <label ng-show="budget.repeat_frequency =='daily'">
-                    Every {{budget.repeat_interval}} days
-                  </label>  
-                  <label ng-show="budget.repeat_frequency =='weekly'">
-                    Every {{budget.repeat_interval}} weeks
-                  </label>  
-                  <label ng-show="budget.repeat_frequency =='monthly'">
-                    Every {{budget.repeat_interval}} months
-                  </label>  
-                  <label ng-show="budget.repeat_frequency =='yearly'">
-                    Every {{budget.repeat_interval}} years
-                  </label>  
-                  
+                <td data-title="'Labels'">
+                  {{actual.labels}}
+                </td>
+                <td data-title="'Notes'">
+                  {{actual.notes}}
+                </td>                
 
                 </td>
-                <td data-title="'Repeat End'">
-                  <label ng-show="budget.repeat_end_option=='until'">
-                    until {{budget.repeat_until | date}}
-                  </label>                  
-                  <label ng-show="budget.repeat_end_option=='occurrences'">
-                    after {{budget.repeat_occurrencies}} occurrences
-                  </label>
-                </td>
-                <td data-title="'Scenario'">
-                  {{budget.scenario.name}}
-                </td>
                 <td data-title="'Actions'" class="actions">
-                  <button class="btn-nostyle edit"" ui-sref="app.budgets.edit({ id: budget.id })">Edit</button>
-                  <button class="btn-nostyle delete" ng-click="delete(budget)">Delete</button>
+                  <button class="btn-nostyle edit" ui-sref="app.actuals.edit({ id: actual.id })">Edit</button>
+                  <button class="btn-nostyle delete" ng-click="delete(actual)">Delete</button>
                 </td>
 
               </tr>

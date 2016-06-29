@@ -1,0 +1,55 @@
+{
+  "title": "createActual",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string"
+    },
+    "aggregate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["name"]
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string"
+        },
+        "account_id": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
+        },
+        "merchant": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },               
+        "category_id": {
+          "type": "string"
+        },
+        "labels": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": ["date", "account_id", "amount", "type", "merchant", "category_id"]
+    }
+  },
+  "required": ["id", "command", "payload"]
+}

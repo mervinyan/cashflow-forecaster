@@ -1,8 +1,8 @@
-<div class="page page-budgets" ng-controller="BudgetsListCtrl">
+<div class="page page-forecasts" ng-controller="ForecastsListCtrl">
 
   <div class="pageheader">
 
-    <h2>Manage Budgets</h2>
+    <h2>Manage Forecasts</h2>
 
     <div class="page-bar">
 
@@ -11,7 +11,7 @@
           <a ui-sref="app.overview"><i class="fa fa-home"></i> {{main.title}}</a>
         </li>
         <li>
-          <a ui-sref="app.budgets.list">Manage Budgets</a>
+          <a ui-sref="app.forecasts.list">Manage Forecasts</a>
         </li>
       </ul>
 
@@ -30,10 +30,9 @@
 
         <!-- tile header -->
         <div class="tile-header dvd dvd-btm">
-          <h1 class="custom-font"><strong>Manage </strong>Budgets</h1>
+          <h1 class="custom-font"><strong>Manage </strong>Forecasts</h1>
           <ul class="controls">
 
-            <li><button class="btn-nostyle" ui-sref="app.budgets.new"><i class="fa fa-plus mr-5"></i> Add Budget</button></li>
 
           </ul>
           
@@ -53,54 +52,25 @@
 
           <div class="table-responsive">
             <table ng-table="tableParams" class="table table-custom" template-pagination="custom/pager">
-              <tr ng-repeat="budget in $data">
+              <tr ng-repeat="forecast in $data">
                 <td data-title="'Name'" sortable="'category/name'">
-                  {{budget.category.name}}
+                  {{forecast.category.name}}
+                </td>
+                <td data-title="'Description'">
+                  {{forecast.description}}
                 </td>
                 <td data-title="'Amount'">
-                  {{budget.amount | currency}}
+                  {{forecast.amount | currency}}
                 </td>
                 <td data-title="'Type'">
-                  {{budget.type}}
+                  {{forecast.type}}
                 </td>
                 <td data-title="'Date'">
-                  {{budget.starts_on | date}}
-                </td>
-                <td data-title="'Repeat'">
-                  <label ng-show="budget.repeat_frequency=='once'">
-                    {{budget.repeat_frequency}}
-                  </label>  
-                  <label ng-show="budget.repeat_frequency =='daily'">
-                    Every {{budget.repeat_interval}} days
-                  </label>  
-                  <label ng-show="budget.repeat_frequency =='weekly'">
-                    Every {{budget.repeat_interval}} weeks
-                  </label>  
-                  <label ng-show="budget.repeat_frequency =='monthly'">
-                    Every {{budget.repeat_interval}} months
-                  </label>  
-                  <label ng-show="budget.repeat_frequency =='yearly'">
-                    Every {{budget.repeat_interval}} years
-                  </label>  
-                  
-
-                </td>
-                <td data-title="'Repeat End'">
-                  <label ng-show="budget.repeat_end_option=='until'">
-                    until {{budget.repeat_until | date}}
-                  </label>                  
-                  <label ng-show="budget.repeat_end_option=='occurrences'">
-                    after {{budget.repeat_occurrencies}} occurrences
-                  </label>
+                  {{forecast.date | date}}
                 </td>
                 <td data-title="'Scenario'">
-                  {{budget.scenario.name}}
+                  {{forecast.scenario.name}}
                 </td>
-                <td data-title="'Actions'" class="actions">
-                  <button class="btn-nostyle edit"" ui-sref="app.budgets.edit({ id: budget.id })">Edit</button>
-                  <button class="btn-nostyle delete" ng-click="delete(budget)">Delete</button>
-                </td>
-
               </tr>
             </table>
             <script type="text/ng-template" id="custom/pager">

@@ -13,8 +13,8 @@ app
 
             $scope.user = user;
             $scope.scenario = {};
-            
-           $scope.interest_payment_frequencies = {
+
+            $scope.interest_payment_frequencies = {
                 no_interest: "No Interest",
                 every_quarter: 'Every Quarter',
                 every_month: "Every Month",
@@ -27,43 +27,43 @@ app
     .controller('ScenariosListCtrl', ['$scope', 'CQRS', 'DenormalizationService', 'scenarioRepository', 'accountRepository', '$filter', 'ngTableParams', 'toastr', '_',
         function ($scope, CQRS, DenormalizationService, scenarioRepository, accountRepository, $filter, ngTableParams, toastr, _) {
 
-        // Initialize table
-        var getAccountsPromise = accountRepository.query().$promise;
-        getAccountsPromise
-        .then(function (result) {
-          $scope.accounts = result.items;
+            // Initialize table
+            var getAccountsPromise = accountRepository.query().$promise;
+            getAccountsPromise
+                .then(function (result) {
+                    $scope.accounts = result.items;
 
-         return scenarioRepository.query().$promise;
-        })
-        .then(function (result) {
-          $scope.scenarios = result.items;
-          //extend array
-          function extendArray(){
-            angular.forEach($scope.scenarios, function(value, key){
-              if (value.account_id){
-                var existingAccount = $filter('filter')($scope.accounts, { id: value.account_id }, true)[0];
-                if (existingAccount != null && existingAccount != undefined) {
-                  value.account = existingAccount;
-                }
-              }
-            });
-          }
-          extendArray();
-          ///////////////////////////////////////////// *extend array
+                    return scenarioRepository.query().$promise;
+                })
+                .then(function (result) {
+                    $scope.scenarios = result.items;
+                    //extend array
+                    function extendArray() {
+                        angular.forEach($scope.scenarios, function (value, key) {
+                            if (value.account_id) {
+                                var existingAccount = $filter('filter')($scope.accounts, { id: value.account_id }, true)[0];
+                                if (existingAccount != null && existingAccount != undefined) {
+                                    value.account = existingAccount;
+                                }
+                            }
+                        });
+                    }
+                    extendArray();
+                    ///////////////////////////////////////////// *extend array
 
-          // watch data in scope, if change reload table
-          $scope.$watchCollection('scenarios', function(newVal, oldVal){
-            if (newVal !== oldVal) {
-              extendArray();
-              $scope.tableParams.reload();
-            }
-          });
+                    // watch data in scope, if change reload table
+                    $scope.$watchCollection('scenarios', function (newVal, oldVal) {
+                        if (newVal !== oldVal) {
+                            extendArray();
+                            $scope.tableParams.reload();
+                        }
+                    });
 
-          $scope.$watch('searchText', function(newVal, oldVal){
-            if (newVal !== oldVal) {
-              $scope.tableParams.reload();
-            }
-          });
+                    $scope.$watch('searchText', function (newVal, oldVal) {
+                        if (newVal !== oldVal) {
+                            $scope.tableParams.reload();
+                        }
+                    });
 
                     ///////////////////////////////////////////// *watch data in scope, if change reload table
 
@@ -122,15 +122,15 @@ app
             };
             /////////////////////// *Submit operation
             console.log($scope);
-        var getAccountsPromise = accountRepository.query().$promise;
-        getAccountsPromise
-        .then(function (result) {
-          $scope.accounts = result.items;
+            var getAccountsPromise = accountRepository.query().$promise;
+            getAccountsPromise
+                .then(function (result) {
+                    $scope.accounts = result.items;
 
-         return scenarioRepository.query().$promise;
-        });
-        
-    }])
+                    return scenarioRepository.query().$promise;
+                });
+
+        }])
 
     .controller('EditScenarioCtrl', ['$scope', 'CQRS', 'DenormalizationService', 'scenarioRepository', 'accountRepository', '$state', '$stateParams', '$filter', 'toastr', '_',
         function ($scope, CQRS, DenormalizationService, scenarioRepository, accountRepository, $state, $stateParams, $filter, toastr, _) {
@@ -175,9 +175,9 @@ app
                 })
                 .then(function (result) {
 
-         $scope.accounts = result.items;
+                    $scope.accounts = result.items;
 
-      });
+                });
         }])
 
     .controller('ScenarioBalanceSettingsCtrl', ['$scope', 'CQRS', 'DenormalizationService', 'scenarioRepository', '$state', '$stateParams', '$filter', 'toastr', '_',
@@ -264,7 +264,7 @@ app
 
                     $state.go('app.scenarios.list', {}, { reload: true });
                 });
-        }]);                        
+        }]);
 
 
 

@@ -1,0 +1,56 @@
+<div class="page page-actuals" ng-controller="EditActualCtrl">
+
+  <div class="pageheader">
+
+    <h2>Edit Actual | {{actual.account.name}}</h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="app.overview"><i class="fa fa-home"></i> {{main.title}}</a>
+        </li>
+        <li>
+          <a ui-sref="app.actuals.list">Manage Actuals</a>
+        </li>
+        <li>
+          <a ui-sref="app.actuals.edit({ id: actual.$id })">{{actual.name}}</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- row -->
+  <div class="row">
+
+
+    <div class="col-md-12">
+
+      <!-- tile -->
+      <section class="tile tile-simple">
+
+
+        <!-- tile body -->
+        <div class="tile-body" ng-include="'views/pages/actuals/_form.html'">
+
+
+
+
+
+        </div>
+        <!-- /tile body -->
+
+
+      </section>
+      <!-- /tile -->
+
+    </div>
+
+  </div>
+  <!-- /row -->
+
+</div>
+
+

@@ -7,25 +7,25 @@ module.exports = require('cqrs-saga').defineSaga({
 function (evt, saga, callback) {
   var categoryId =  evt.payload.id;
   
-  const productsRepo = require('../viewBuilders/product/collection');
-  productsRepo.findViewModels({ categoryId: categoryId }, (err, products) => {
-    products.forEach(function(entry) {
-      var cmd = {
-        command: 'deleteProduct',
-        aggregate: { 
-          name: 'product'
-        },
-        payload: {
-          id : entry.id,
-        },
-        meta: evt.meta
-      };
+  // const productsRepo = require('../viewBuilders/product/collection');
+  // productsRepo.findViewModels({ categoryId: categoryId }, (err, products) => {
+  //   products.forEach(function(entry) {
+  //     var cmd = {
+  //       command: 'deleteProduct',
+  //       aggregate: { 
+  //         name: 'product'
+  //       },
+  //       payload: {
+  //         id : entry.id,
+  //       },
+  //       meta: evt.meta
+  //     };
 
-      saga.addCommandToSend(cmd);
-    }); 
+  //     saga.addCommandToSend(cmd);
+  //   }); 
     
-    saga.commit(callback);
-  });
+  //   saga.commit(callback);
+  // });
 
   const budgetsRepo = require('../viewBuilders/budget/collection');
   budgetsRepo.findViewModels({ category_id: categoryId }, (err, budgets) => {

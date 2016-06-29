@@ -1,0 +1,49 @@
+{
+  "title": "createForecast",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string"
+    },
+    "aggregate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["name"]
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "category_id": {
+          "type": "string"
+        },
+        "budget_id": {
+          "type": "string"
+        },        
+        "amount": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
+        },
+        "scenario_id": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }       
+      },
+      "required": ["category_id", "budget_id", "amount", "type", "scenario_id", "date"]
+    }
+  },
+  "required": ["id", "command", "payload"]
+}
