@@ -9,6 +9,9 @@ var express = require('express')
   , log4js = require('log4js')
   , socket = require('socket.io')
   , viewmodel = require('viewmodel')
+  , multer = require('multer')
+  , fs = require('fs')
+  , csv = require('fast-csv')
   , eventDenormalizerConfig = require('../config/eventDenormalizer-config');
 
 //configurate logger
@@ -39,6 +42,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads');
+  },
+  filename: function(req, file, cb) {
+    cb(null, "actuals.csv");
+  }
+});
+app.use(multer({storage: storage}).single('actuals'));
+
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
 app.engine('html', require('ejs').renderFile);

@@ -41,7 +41,7 @@
   <div class="form-group">
     <label for="interest_payment_frequency" class="col-sm-3 control-label">Interest Payment Frequency <span class="text-danger" style="font-size: 15px;">*</span></label>
     <div class="col-sm-9">
-      <select chosen="{width: '100%'}" name="type" class="form-control" id="interest_payment_frequency" ng-options="k as v for (k,v) in interest_payment_frequencies" ng-model="account.interest_payment_frequency" data-placeholder="Select an interest payment frequency..." required>
+      <select chosen="{width: '100%'}" name="type" class="form-control" id="interest_payment_frequency" ng-options="k as v for (k,v) in interest_payment_frequencies" ng-model="interest_settings.interest_payment_frequency" data-placeholder="Select an interest payment frequency..." required>
           <option></option>
       </select>
     </div>
@@ -51,7 +51,7 @@
       <label for="std_apr" class="col-sm-3 control-label">Interest Rate (Per Annum) </label>
       <div class="col-sm-9">
         <div class="input-group">
-          <input type="number" class="form-control" name="interest_rate_per_annum" id="interest_rate_per_annum" ng-model="account.interest_rate_per_annum" min="0" max="100" >
+          <input type="number" class="form-control" name="interest_rate_per_annum" id="interest_rate_per_annum" ng-model="interest_settings.interest_rate_per_annum" min="0" max="100" >
           <div class="input-group-addon">%</div>
         </div>
       </div>

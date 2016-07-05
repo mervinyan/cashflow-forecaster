@@ -20,6 +20,9 @@
     "payload": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
@@ -81,7 +84,7 @@
           "type": "string"
         }       
       },
-      "required": ["name", "bank", "type", "status", "balance"]
+      "required": ["id", "name", "bank", "type", "status", "balance"]
     }
   },
   "required": ["id", "command", "payload"]

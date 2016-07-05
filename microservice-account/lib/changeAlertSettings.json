@@ -20,6 +20,9 @@
     "payload": {
       "type": "object",
       "properties": {
+         "id": {
+          "type": "string"
+        },
         "alert_enabled": {
           "type": "boolean"
         },
@@ -27,7 +30,7 @@
           "type": "number"
         }
       },
-      "required": ["alert_enabled", "alert_amount"]
+      "required": ["id", "alert_enabled", "alert_amount"]
     }
   },
   "required": ["id", "command", "payload"]

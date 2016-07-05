@@ -20,6 +20,9 @@
     "payload": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string"
+        },
         "openging_balance": {
           "type": "number"
         },
@@ -27,7 +30,7 @@
           "type": "string"
         }
       },
-      "required": ["openging_balance", "opening_balance_as_of_date"]
+      "required": ["id", "openging_balance", "opening_balance_as_of_date"]
     }
   },
   "required": ["id", "command", "payload"]

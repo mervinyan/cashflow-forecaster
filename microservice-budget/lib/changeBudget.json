@@ -20,6 +20,9 @@
     "payload": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string"
+        },
         "category_id": {
           "type": "string"
         },
@@ -81,7 +84,7 @@
           "type": "string"
         }       
       },
-      "required": ["category_id", "amount", "type", "scenario_id", "starts_on", "repeat_frequency"]
+      "required": ["id", "category_id", "amount", "type", "scenario_id", "starts_on", "repeat_frequency"]
     }
   },
   "required": ["id", "command", "payload"]

@@ -23,7 +23,7 @@ var app = angular
     'ngCQRS',
     'btford.socket-io',
     'underscore',
-    'ngCsvImport',
+    'ngCsvImport'
   ]);
 
   app.run(['$rootScope', 'StoreService' ,'CQRS', 'socket', 'Auth', '$timeout', 'toastr',

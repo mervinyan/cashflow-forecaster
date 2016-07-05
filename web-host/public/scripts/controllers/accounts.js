@@ -278,6 +278,8 @@ app
 
             $scope.editing = true;
 
+            // $scope.balance_settings = {};
+
             var accountId = $stateParams.id;
 
             var eventName = "balanceSettingsChanged";
@@ -294,21 +296,25 @@ app
 
             // Submit operation
             $scope.ok = function (form) {
-
-                CQRS.sendCommand({
+                var cmd = {
                     id: _.uniqueId('msg'),
                     command: commandName,
                     aggregate: {
                         name: $scope.aggregate
                     },
                     payload: $scope.account
-                });
+                };
+                console.log(cmd);
+                CQRS.sendCommand(cmd);
             };
 
             var getAccountPromise = accountRepository.get({ id: accountId }).$promise;
             getAccountPromise
                 .then(function (result) {
                     $scope.account = result;
+                    // $scope.account.balance_as_of_date = new Date();
+                    // $scope.balance_settings.balance = $scope.account.balance;
+                    // $scope.balance_settings.balance_as_of_date = $scope.account.balance_as_of_date;
                     return getAccountPromise;
                 }, function () {
 
@@ -318,6 +324,8 @@ app
 
     .controller('AccountInterestSettingsCtrl', ['$scope', 'CQRS', 'DenormalizationService', 'accountRepository', '$state', '$stateParams', '$filter', 'toastr', '_',
         function ($scope, CQRS, DenormalizationService, accountRepository, $state, $stateParams, $filter, toastr, _) {
+
+            $scope.interest_settings = {};
 
             $scope.interest_payment_frequencies = {
                 no_interest: "No Interest",
@@ -350,7 +358,11 @@ app
                     aggregate: {
                         name: $scope.aggregate
                     },
-                    payload: $scope.account
+                    payload: {
+                        id: $scope.account.id,
+                        interest_payment_frequency: $scope.interest_settings.interest_payment_frequency,
+                        interest_rate_per_annum: $scope.interest_settings.interest_rate_per_annum
+                    }
                 });
             };
 
@@ -358,7 +370,7 @@ app
             getAccountPromise
                 .then(function (result) {
                     $scope.account = result;
-                    return getAccountPromise;
+                    // return getAccountPromise;
                 }, function () {
 
                     $state.go('app.accounts.list', {}, { reload: true });
@@ -367,6 +379,8 @@ app
 
     .controller('AccountAlertSettingsCtrl', ['$scope', 'CQRS', 'DenormalizationService', 'accountRepository', '$state', '$stateParams', '$filter', 'toastr', '_',
         function ($scope, CQRS, DenormalizationService, accountRepository, $state, $stateParams, $filter, toastr, _) {
+
+            $scope.alert_settings = {};
 
             $scope.editing = true;
 
@@ -393,7 +407,11 @@ app
                     aggregate: {
                         name: $scope.aggregate
                     },
-                    payload: $scope.account
+                    payload: {
+                        id: $scope.account.id,
+                        alert_enabled: $scope.alert_settings.alert_enabled,
+                        alert_amount: $scope.alert_settings.alert_amount
+                    }
                 });
             };
 
@@ -401,7 +419,7 @@ app
             getAccountPromise
                 .then(function (result) {
                     $scope.account = result;
-                    return getAccountPromise;
+                    // return getAccountPromise;
                 }, function () {
 
                     $state.go('app.accounts.list', {}, { reload: true });

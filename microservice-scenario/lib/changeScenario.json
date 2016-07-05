@@ -20,6 +20,9 @@
     "payload": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
@@ -34,9 +37,9 @@
         },
         "interest_rate_per_annum": {
           "type": "number"
-        },
+        }
       },
-      "required": ["name", "account_id", "type"]
+      "required": ["id", "name", "account_id", "type"]
     }
   },
   "required": ["id", "command", "payload"]

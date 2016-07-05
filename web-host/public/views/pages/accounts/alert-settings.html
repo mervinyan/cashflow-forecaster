@@ -41,7 +41,7 @@
     <div class="form-group">
       <div class="col-sm-9 col-md-offset-3">
         <label class="checkbox checkbox-custom-alt inline mr-20">
-          <input type="checkbox"  ng-model="account.alert_enabled"><i></i>
+          <input type="checkbox"  ng-model="alert_settings.alert_enabled"><i></i>
           Set minimum balance alert
         </label>
       </div>
@@ -53,7 +53,7 @@
       <div class="col-sm-9">
         <div class="input-group">
           <div class="input-group-addon">$</div>
-          <input type="number" class="form-control" name="alert_amount" id="alert_amount" ng-model="account.alert_amount" min="0" >
+          <input type="number" class="form-control" name="alert_amount" id="alert_amount" ng-model="alert_settings.alert_amount" min="0" >
         </div>
       </div>
     </div>

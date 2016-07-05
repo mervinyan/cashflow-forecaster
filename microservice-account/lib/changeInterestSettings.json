@@ -20,6 +20,9 @@
     "payload": {
       "type": "object",
       "properties": {
+         "id": {
+          "type": "string"
+        },
         "interest_payment_frequency": {
           "type": "string"
         },
@@ -27,7 +30,7 @@
           "type": "number"
         }
       },
-      "required": ["interest_payment_frequency", "interest_rate_per_annum"]
+      "required": ["id", "interest_payment_frequency", "interest_rate_per_annum"]
     }
   },
   "required": ["id", "command", "payload"]

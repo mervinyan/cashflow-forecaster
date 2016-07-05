@@ -1,5 +1,5 @@
 {
-  "title": "changeActual",
+  "title": "importActual",
   "type": "object",
   "properties": {
     "id": {
@@ -20,9 +20,6 @@
     "payload": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string"
-        },
         "date": {
           "type": "string"
         },
@@ -51,7 +48,7 @@
           "type": "string"
         }
       },
-      "required": ["id", "date", "account_id", "amount", "type", "merchant", "category_id"]
+      "required": ["date", "account_id", "amount", "type", "merchant", "category_id"]
     }
   },
   "required": ["id", "command", "payload"]

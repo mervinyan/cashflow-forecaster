@@ -20,14 +20,17 @@
     "payload": {
       "type": "object",
       "properties": {
+         "id": {
+          "type": "string"
+        },
         "balance": {
           "type": "number"
-        },
-        "balance_as_of_date": {
-          "type": "string"
         }
+        // "balance_as_of_date": {
+        //   "type": "string"
+        // }
       },
-      "required": ["balance", "balance_as_of_date"]
+      "required": ["id", "balance"]
     }
   },
   "required": ["id", "command", "payload"]

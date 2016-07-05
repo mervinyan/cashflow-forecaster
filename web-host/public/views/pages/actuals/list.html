@@ -44,12 +44,12 @@
         <div class="tile-body">
 
 
-          <div class="row">
+          <!--<div class="row">
             <div class="col-md-6"></div>
             <div class="col-md-6">
               <input type="text" class="form-control underline-input w-md pull-right mb-20" placeholder="Search..." ng-model="searchText">
             </div>
-          </div>
+          </div>-->
 
           <div class="table-responsive">
             <table ng-table="tableParams" class="table table-custom" template-pagination="custom/pager">
@@ -79,7 +79,6 @@
                   {{actual.notes}}
                 </td>                
 
-                </td>
                 <td data-title="'Actions'" class="actions">
                   <button class="btn-nostyle edit" ui-sref="app.actuals.edit({ id: actual.id })">Edit</button>
                   <button class="btn-nostyle delete" ng-click="delete(actual)">Delete</button>
@@ -90,11 +89,11 @@
             <script type="text/ng-template" id="custom/pager">
               <div class="ng-cloak ng-table-pager mt-20" ng-if="params.data.length">
 
-                <div ng-if="params.settings().counts.length" class="ng-table-counts btn-group pull-right">
+                <!--<div ng-if="params.settings().counts.length" class="ng-table-counts btn-group pull-right">
 
                   <select ng-options="count for count in params.settings().counts" ng-model="params.$params.count" class="form-control"></select>
 
-                </div>
+                </div>-->
 
                 <ul class="pagination pagination-xs pagination-custom">
                   <li ng-class="{'disabled': !page.active && !page.current, 'active': page.current}" ng-repeat="page in pages" ng-switch="page.type">

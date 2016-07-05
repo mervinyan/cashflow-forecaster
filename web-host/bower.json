@@ -23,7 +23,6 @@
     "chosen_v1.4.2": "https://github.com/harvesthq/chosen/releases/download/1.4.2/chosen_v1.4.2.zip",
     "angular-chosen-localytics": "~1.0.7",
     "angular-toastr": "~1.5.0",
-    "ng-file-upload": "~10.0.2",
     "momentjs": "latest",
     "magnific-popup": "latest",
     "angular-slick": "~0.2.1",
@@ -31,7 +30,11 @@
     "angular.CQRS": "latest",
     "angular-socket-io": "latest",
     "angular-underscore-module": "^1.0.3",
-    "angular-csv-import-tmp": "angular-csv-import#^0.0.29"
+    "angular-highlightjs": "^0.6.1",
+    "highlightjs": "^9.4.0",
+    "ng-file-upload": "^12.0.4",
+    "angular-csv-import": "angular-csv-import#^0.0.29",
+    "numeral": "^1.5.3"
   },
   "overrides": {
     "bootstrap": {
