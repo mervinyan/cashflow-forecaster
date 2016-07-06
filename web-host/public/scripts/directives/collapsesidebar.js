@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name emissApp.directive:collapseSidebarSm
+ * @name forecasterApp.directive:collapseSidebarSm
  * @description
  * # collapseSidebarSm
  */

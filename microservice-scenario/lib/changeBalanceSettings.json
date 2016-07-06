@@ -23,14 +23,14 @@
         "id": {
           "type": "string"
         },
-        "openging_balance": {
+        "opening_balance": {
           "type": "number"
         },
         "opening_balance_as_of_date": {
           "type": "string"
         }
       },
-      "required": ["id", "openging_balance", "opening_balance_as_of_date"]
+      "required": ["id", "opening_balance", "opening_balance_as_of_date"]
     }
   },
   "required": ["id", "command", "payload"]

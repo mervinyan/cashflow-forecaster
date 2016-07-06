@@ -57,6 +57,9 @@
                 <td data-title="'Name'" sortable="'name'">
                   {{scenario.name}}
                 </td>
+                <td data-title="'Type'">
+                  {{scenario.type}}
+                </td>
                 <td data-title="'Account'" sortable="'account/name'">
                   {{scenario.account.name}}
                 </td>
@@ -73,10 +76,10 @@
                   {{scenario.opening_balance_as_of_date | date: 'yyyy-MM-dd'}}
                 </td>
                 <td data-title="'Actions'" class="actions">
-                  <button class="btn-nostyle edit"" ui-sref="app.scenarios.edit({ id: scenario.id })">Edit</button>
-                  <button class="btn-nostyle edit" ui-sref="app.scenarios.balance-settings({ id: scenario.id })">Balance</button>
-                  <button class="btn-nostyle edit" ui-sref="app.scenarios.alert-settings({ id: scenario.id })">Alert</button>
-                  <button class="btn-nostyle delete" ui-sref="app.scenarios.delete({ id: scenario.id })">Delete</button>
+                  <button class="btn-nostyle edit"" ng-hide="scenario.type=='primary'" ui-sref="app.scenarios.edit({ id: scenario.id })">Edit</button>
+                  <button class="btn-nostyle edit" ng-hide="scenario.type=='primary'"ui-sref="app.scenarios.balance-settings({ id: scenario.id })">Balance</button>
+                  <button class="btn-nostyle edit" ng-hide="scenario.type=='primary'"ui-sref="app.scenarios.alert-settings({ id: scenario.id })">Alert</button>
+                  <button class="btn-nostyle delete" ng-hide="scenario.type=='primary'"ui-sref="app.scenarios.delete({ id: scenario.id })">Delete</button>
                 </td>
 
               </tr>

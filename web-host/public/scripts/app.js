@@ -4,7 +4,7 @@
 /* exported app */
 
 var app = angular
-  .module('emissApp', [
+  .module('forecasterApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',

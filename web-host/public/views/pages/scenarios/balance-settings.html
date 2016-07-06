@@ -43,7 +43,7 @@
       <div class="col-sm-9">
         <div class="input-group">
           <div class="input-group-addon">$</div>
-          <input type="number" class="form-control" name="balance" id="balance" ng-model="scenario.opening_balance" min="0" >
+          <input type="number" class="form-control" name="balance" id="balance" ng-model="balance_settings.opening_balance" min="0" >
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
     <div class="form-group">
       <label for="balance_as_of_date" class="col-sm-3 control-label">At end of </label>
       <div class="col-sm-9">
-        <input type="date" name="balance_as_of_date" class="form-control" id="balance_as_of_date" pattern="yyyy-MM-dd" ng-model="scenario.opening_balance_as_of_date">
+        <input type="date" name="balance_as_of_date" class="form-control" id="balance_as_of_date" ng-model="balance_settings.opening_balance_as_of_date">
       </div>
     </div>    
 

@@ -200,62 +200,6 @@ app
       authRequired: true
     },
 
-    'app.products': {
-      abstract: true,
-      url: '/products',
-      template: '<div ui-view></div>',
-      authRequired: true
-    },
-    'app.products.list': {
-      url: '/list',
-      controller: 'ProductsCtrl',
-      templateUrl: 'views/pages/products/list.html',
-      authRequired: true
-    },
-    'app.products.new': {
-      url: '/new',
-      controller: 'ProductsCtrl',
-      templateUrl: 'views/pages/products/new.html',
-      authRequired: true
-    },
-    'app.products.edit': {
-      url: '/edit/:id',
-      controller: 'ProductsCtrl',
-      templateUrl: 'views/pages/products/edit.html',
-      authRequired: true
-    },
-    'app.products.show': {
-      url: '/show/:id',
-      controller: 'ProductsCtrl',
-      templateUrl: 'views/pages/products/show.html',
-      authRequired: true
-    },
-
-    'app.orders': {
-      abstract: true,
-      url: '/orders',
-      template: '<div ui-view></div>',
-      authRequired: true
-    },
-    'app.orders.list': {
-      url: '/list',
-      controller: 'OrdersCtrl',
-      templateUrl: 'views/pages/orders/list.html',
-      authRequired: true
-    },
-    'app.orders.new': {
-      url: '/new/:productId',
-      controller: 'NewOrderCtrl',
-      templateUrl: '',
-      authRequired: true
-    },
-    'app.orders.show': {
-      url: '/show/:id',
-      controller: 'OrdersCtrl',
-      templateUrl: 'views/pages/orders/show.html',
-      authRequired: true
-    },
-
     'app.users': {
       abstract: true,
       url: '/users',

@@ -14,7 +14,7 @@ app
 
     $scope.main = {
       title: 'Forecaster',
-      appName: 'emissApp',
+      appName: 'forecasterApp',
       settings: {
         navbarHeaderColor: 'scheme-drank',
         sidebarColor: 'scheme-drank',

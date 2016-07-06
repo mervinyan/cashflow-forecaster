@@ -185,6 +185,8 @@ app
 
             $scope.editing = true;
 
+            $scope.balance_settings = {};
+
             var scenarioId = $stateParams.id;
 
             var eventName = "balanceSettingsChanged";
@@ -208,7 +210,11 @@ app
                     aggregate: {
                         name: $scope.aggregate
                     },
-                    payload: $scope.scenario
+                    payload: {
+                        id: $scope.scenario.id,
+                        opening_balance: $scope.balance_settings.opening_balance,
+                        opening_balance_as_of_date: $scope.balance_settings.opening_balance_as_of_date
+                    }
                 });
             };
 
@@ -216,7 +222,8 @@ app
             getScenarioPromise
                 .then(function (result) {
                     $scope.scenario = result;
-                    return getScenarioPromise;
+                    $scope.balance_settings.opening_balance = $scope.scenario.opening_balance;
+                    $scope.balance_settings.opening_balance_as_of_date = new Date($scope.scenario.opening_balance_as_of_date);
                 }, function () {
 
                     $state.go('app.scenarios.list', {}, { reload: true });
@@ -226,6 +233,7 @@ app
     .controller('ScenarioAlertSettingsCtrl', ['$scope', 'CQRS', 'DenormalizationService', 'scenarioRepository', '$state', '$stateParams', '$filter', 'toastr', '_',
         function ($scope, CQRS, DenormalizationService, scenarioRepository, $state, $stateParams, $filter, toastr, _) {
 
+            $scope.alert_settings = {};
             $scope.editing = true;
 
             var scenarioId = $stateParams.id;
@@ -251,7 +259,11 @@ app
                     aggregate: {
                         name: $scope.aggregate
                     },
-                    payload: $scope.scenario
+                    payload: {
+                        id: $scope.scenario.id,
+                        alert_enabled: $scope.alert_settings.alert_enabled,
+                        alert_amount: $scope.alert_settings.alert_amount
+                    }
                 });
             };
 
@@ -259,7 +271,8 @@ app
             getScenarioPromise
                 .then(function (result) {
                     $scope.scenario = result;
-                    return getScenarioPromise;
+                    $scope.alert_settings.alert_enabled = $scope.scenario.alert_enabled;
+                    $scope.alert_settings.alert_amount = $scope.scenario.alert_amount;
                 }, function () {
 
                     $state.go('app.scenarios.list', {}, { reload: true });

@@ -278,7 +278,7 @@ app
 
             $scope.editing = true;
 
-            // $scope.balance_settings = {};
+            $scope.balance_settings = {};
 
             var accountId = $stateParams.id;
 
@@ -302,7 +302,11 @@ app
                     aggregate: {
                         name: $scope.aggregate
                     },
-                    payload: $scope.account
+                    payload: {
+                        id: $scope.account.id,
+                        balance: $scope.balance_settings.balance,
+                        balance_as_of_date: $scope.balance_settings.balance_as_of_date
+                    }
                 };
                 console.log(cmd);
                 CQRS.sendCommand(cmd);
@@ -313,9 +317,8 @@ app
                 .then(function (result) {
                     $scope.account = result;
                     // $scope.account.balance_as_of_date = new Date();
-                    // $scope.balance_settings.balance = $scope.account.balance;
-                    // $scope.balance_settings.balance_as_of_date = $scope.account.balance_as_of_date;
-                    return getAccountPromise;
+                    $scope.balance_settings.balance = $scope.account.balance;
+                    $scope.balance_settings.balance_as_of_date = new Date($scope.account.balance_as_of_date);
                 }, function () {
 
                     $state.go('app.accounts.list', {}, { reload: true });
@@ -370,7 +373,8 @@ app
             getAccountPromise
                 .then(function (result) {
                     $scope.account = result;
-                    // return getAccountPromise;
+                    $scope.interest_settings.interest_payment_frequency = $scope.account.interest_payment_frequency;
+                    $scope.interest_settings.interest_rate_per_annum = $scope.account.interest_rate_per_annum;
                 }, function () {
 
                     $state.go('app.accounts.list', {}, { reload: true });
@@ -419,7 +423,8 @@ app
             getAccountPromise
                 .then(function (result) {
                     $scope.account = result;
-                    // return getAccountPromise;
+                    $scope.alert_settings.alert_enabled = $scope.account.alert_enabled;
+                    $scope.alert_settings.alert_amount = $scope.account.alert_amount;
                 }, function () {
 
                     $state.go('app.accounts.list', {}, { reload: true });

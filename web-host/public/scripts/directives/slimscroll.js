@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name emissApp.directive:slimScroll
+ * @name forecasterApp.directive:slimScroll
  * @description
  * # slimScroll
  */

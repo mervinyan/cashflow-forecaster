@@ -1,8 +1,8 @@
 'use strict';
 
 app
-  .controller('OverviewCtrl', ['$scope', '$state', 'categoryRepository', 'accountRepository', /*'productRepository', 'orderRepository',*/ '$firebaseArray', 'FBURL', '$filter', 'uploadImage', 'user', 'toastr',
-    function ($scope, $state, categoryRepository, accountRepository, /*productRepository, orderRepository,*/ $firebaseArray, FBURL, $filter, uploadImage, user, toastr) {
+  .controller('OverviewCtrl', ['$scope', '$state', 'categoryRepository', 'accountRepository', '$firebaseArray', 'FBURL', '$filter', 'uploadImage', 'user', 'toastr',
+    function ($scope, $state, categoryRepository, accountRepository,  $firebaseArray, FBURL, $filter, uploadImage, user, toastr) {
 
       $scope.page = {
         title: 'Overview'
@@ -18,23 +18,6 @@ app
         .then(function (result) {
           $scope.accounts = result.items;
         });
-
-      // var getProductsPromise = productRepository.query().$promise;
-      // getProductsPromise
-      //   .then(function (result) {
-      //     $scope.products = result.items;
-      //   });
-
-      // var getOrdersPromise = orderRepository.query().$promise;
-      // getOrdersPromise
-      //   .then(function (result) {
-      //     $scope.orders = result.items;
-
-      //     $scope.ordersValue = 0;
-      //     angular.forEach($scope.orders, function (val, key) {
-      //       $scope.ordersValue += val.subTotal;
-      //     });
-      //   });
 
       // General Firebase variable
       var ref = new Firebase(FBURL);
